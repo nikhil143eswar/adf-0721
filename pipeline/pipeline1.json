@@ -83,7 +83,7 @@
 								"source": {
 									"type": "DelimitedTextSource",
 									"storeSettings": {
-										"type": "FileServerReadSettings",
+										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
 										"wildcardFileName": {
 											"value": "@item().name",
@@ -95,8 +95,39 @@
 										"type": "DelimitedTextReadSettings"
 									}
 								},
-								"enableStaging": false
-							}
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "input_file",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "output_file",
+									"type": "DatasetReference"
+								}
+							]
 						},
 						{
 							"name": "Copy Data2",
@@ -114,7 +145,7 @@
 								"source": {
 									"type": "DelimitedTextSource",
 									"storeSettings": {
-										"type": "FileServerReadSettings",
+										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
 										"wildcardFileName": {
 											"value": "@item().name",
@@ -126,8 +157,39 @@
 										"type": "DelimitedTextReadSettings"
 									}
 								},
-								"enableStaging": false
-							}
+								"sink": {
+									"type": "SqlServerSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "input_file",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "sqlserver",
+									"type": "DatasetReference",
+									"parameters": {
+										"TableName": {
+											"value": "item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
