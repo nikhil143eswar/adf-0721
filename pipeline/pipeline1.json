@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Meta Data",
+				"name": "Get Meta Data1",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -15,6 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataset": {
+						"referenceName": "input_Folder",
+						"type": "DatasetReference"
+					},
 					"fieldList": [],
 					"storeSettings": {
 						"type": "FileServerReadSettings",
@@ -31,7 +35,7 @@
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "Get Meta Data",
+						"activity": "Get Meta Data1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -40,7 +44,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
+						"value": "@activity('Get Meta Data1').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
