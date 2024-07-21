@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Get_File_Names",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -15,9 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "FileServerReadSettings",
 						"recursive": true,
@@ -29,11 +27,11 @@
 				}
 			},
 			{
-				"name": "Filter1",
+				"name": "Filter_Files",
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Get_File_Names",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -52,11 +50,11 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "For_each_loop",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Filter1",
+						"activity": "Filter_Files",
 						"dependencyConditions": [
 							"Succeeded"
 						]
