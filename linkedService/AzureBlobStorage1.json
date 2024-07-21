@@ -1,0 +1,19 @@
+{
+	"name": "AzureBlobStorage1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=storageacc0721001;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "storagekey"
+			}
+		}
+	}
+}

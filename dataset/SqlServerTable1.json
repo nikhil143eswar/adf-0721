@@ -1,0 +1,28 @@
+{
+	"name": "SqlServerTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Pipeline1"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "",
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

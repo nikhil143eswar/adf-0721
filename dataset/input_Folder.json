@@ -1,0 +1,39 @@
+{
+	"name": "input_Folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Pipeline1"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"folderPath": "movies"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "movieId",
+				"type": "String"
+			},
+			{
+				"name": "imdbId",
+				"type": "String"
+			},
+			{
+				"name": "tmdbId",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

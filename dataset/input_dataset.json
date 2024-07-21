@@ -1,0 +1,26 @@
+{
+	"name": "input_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Pipeline1"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"folderPath": "movies"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
